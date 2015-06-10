@@ -2,12 +2,13 @@ default: &default
   adapter: postgresql
   encoding: unicode
   username: postgres
+  password: <%=Rails.application.secrets[:password]%>
   pool: 5
  
 development:
   <<: *default
-  database: game_api_dev
+  database: benchwarner_api_dev
 
 test:
   <<: *default
-  database: game_api_test
+  database: benchwarner_api_test
