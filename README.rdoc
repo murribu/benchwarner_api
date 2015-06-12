@@ -1,11 +1,9 @@
-== Game API
+== Benchwarner API
 
-This project's main purpose is for me to explore creating an API using Rails. As a goal, I'm hoping to create an engine for playing games.
+The plan is to develop an API that can serve as an engine for the Benchwarner idea.
 
-First, I'm implementing a very simple "Guess the number" game.
+That idea is to organize a person's fantasy sports teams. Starting with baseball.
 
-Second, I'd like to attempt something like Connect Four. Perhaps with some AI.
+A person will be "warned" when they're "bench"ing a player who's starting - or vice versa.
 
-If I want to carry it out very far, I'd love to try to implement card games (Hearts, Spades, etc)
-
-Also, I'd love to implement Strategies - so you could tell the API to play a game of Spades (e.g.) according to a certain set of rules.
+This current exists at benchwarner.com in a very beta way.
