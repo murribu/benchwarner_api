@@ -173,3 +173,6 @@ DEPENDENCIES
   rspec-rails (~> 3.0)
   shoulda-matchers
   tzinfo-data
+
+BUNDLED WITH
+   1.10.0.pre.2
