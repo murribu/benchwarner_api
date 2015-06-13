@@ -58,13 +58,14 @@ class CreateSportsStructure < ActiveRecord::Migration
       t.string  :marcel_id
       t.references  :team, index: true
       t.boolean :played_today
-      t.integer :duplicate_player_id
+      t.integer :duplicate_pl_key
       t.string  :espn_alt_id
       t.boolean :starting_today
       t.date    :last_start
       t.date    :last_appeared
       t.string  :twitter_handle
       t.string  :contract_info
+      t.integer :pl_key, index: true
       t.timestamps
     end
     create_table :games do |t|
