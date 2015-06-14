@@ -27,8 +27,6 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   config.include SessionHelper, type: :request
   config.include RequestsHelper, type: :request
-  config.include GameHelper, type: :request
-  config.include ConnectHelper, type: :request
   # ## Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
