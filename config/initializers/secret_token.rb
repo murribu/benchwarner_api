@@ -16,4 +16,4 @@
 # Using secret_token for rails3 compatibility. Change to secret_key_base
 # to avoid deprecation warning.
 # Can be safely removed in a rails3 api-only application.
-GameApi::Application.config.secret_token = '7012ac065d7e7f75959aac5273d0f4f960bec10e01640cce822a37e32b08fd99aaaf1be6e187ae732b183c2b9fa48d0c91c19a8609435502d96f09ec6b8bdc6c'
+GameApi::Application.config.secret_token = '09780634b7fafceaaa7cc6babec62101c0bc1cb17bc717e232921c0e2753f4209db4bf3e74cb92aa695bdf3d99b0a56ce1ea86f1f3a1fe2a898f68ffa7d48d3a'

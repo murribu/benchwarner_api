@@ -1,28 +1,9 @@
-== README
+== Benchwarner API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The plan is to develop an API that can serve as an engine for the Benchwarner idea.
 
-Things you may want to cover:
+That idea is to organize a person's fantasy sports teams. Starting with baseball.
 
-* Ruby version
+A person will be "warned" when they're "bench"ing a player who's starting - or vice versa.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+This current exists at benchwarner.com in a very beta way.

@@ -1,6 +1,5 @@
 module V1
   class SessionsController < ApplicationController
-    skip_before_action :authenticate_user_from_token!
     
     # POST /v1/login
     def create
@@ -9,7 +8,10 @@ module V1
 
       if @user.valid_password?(params[:password])
         sign_in :user, @user
-        render json: @user, serializer: SessionSerializer, root: nil
+        app_id = OauthAccessToken.where(token: request.headers['Authorization']).first.id
+        new_token = @user.oauth_access_tokens.create(:oauth_application_id => app_id, :token => Faker::Lorem.characters(60), :scope => 'user', :expires_at => 24.hours.from_now)
+        retVal = {token: new_token.token}
+        render json: retVal
       else
         invalid_login_attempt
       end

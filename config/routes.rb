@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users
+  #devise_for :user
   
   namespace :v1, defaults: { format: :json } do
-    resource :login, only: [:create], controller: :sessions
+    post  'login',                                                 to: 'sessions#create'
+    get   'me',                                                    to: 'users#me'
+    get   'players/:player_id',                                    to: 'players#search'
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
