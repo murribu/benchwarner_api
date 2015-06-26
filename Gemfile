@@ -11,7 +11,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 group :development, :test do
   gem 'mysql2'
-  gem 'rspec-rails', '~> 3.0'
+  gem 'rspec-rails', '~> 2.0'
   gem 'capybara'
   gem 'shoulda-matchers', require: false
   gem 'factory_girl_rails', '~> 4.0'

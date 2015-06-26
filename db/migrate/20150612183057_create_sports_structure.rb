@@ -93,14 +93,6 @@ class CreateSportsStructure < ActiveRecord::Migration
       t.boolean   :start
       t.timestamps
     end
-    create_table :postions do |t|
-      t.references :sport, index: true
-      t.string  :name
-      t.string  :abbr
-      t.integer :order
-      t.integer :fielding_number
-      t.timestamps
-    end
     create_table :probable_starters do |t|
       t.references  :player, index: true
       t.references  :game, index: true

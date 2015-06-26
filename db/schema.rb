@@ -11,10 +11,53 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150612183057) do
+ActiveRecord::Schema.define(version: 20150625201619) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "fantasy_leagues", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "site_id"
+    t.integer  "sport_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "fantasy_leagues", ["site_id"], name: "index_fantasy_leagues_on_site_id", using: :btree
+  add_index "fantasy_leagues", ["sport_id"], name: "index_fantasy_leagues_on_sport_id", using: :btree
+
+  create_table "fantasy_rosterspots", force: :cascade do |t|
+    t.integer  "fantasy_team_id"
+    t.integer  "player_id"
+    t.integer  "position_id"
+    t.date     "date"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "fantasy_rosterspots", ["date"], name: "index_fantasy_rosterspots_on_date", using: :btree
+  add_index "fantasy_rosterspots", ["fantasy_team_id"], name: "index_fantasy_rosterspots_on_fantasy_team_id", using: :btree
+  add_index "fantasy_rosterspots", ["player_id"], name: "index_fantasy_rosterspots_on_player_id", using: :btree
+  add_index "fantasy_rosterspots", ["position_id"], name: "index_fantasy_rosterspots_on_position_id", using: :btree
+
+  create_table "fantasy_sites", force: :cascade do |t|
+    t.string   "name"
+    t.string   "abbr"
+    t.string   "domain"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "fantasy_teams", force: :cascade do |t|
+    t.string   "name"
+    t.string   "site_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "fantasy_teams", ["user_id"], name: "index_fantasy_teams_on_user_id", using: :btree
 
   create_table "games", force: :cascade do |t|
     t.datetime "start_time"
@@ -134,17 +177,26 @@ ActiveRecord::Schema.define(version: 20150612183057) do
   add_index "players", ["pl_key"], name: "index_players_on_pl_key", using: :btree
   add_index "players", ["team_id"], name: "index_players_on_team_id", using: :btree
 
-  create_table "postions", force: :cascade do |t|
-    t.integer  "sport_id"
-    t.string   "name"
-    t.string   "abbr"
-    t.integer  "order"
-    t.integer  "fielding_number"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "position_indices", force: :cascade do |t|
+    t.integer  "fantasy_position_id"
+    t.integer  "real_position_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
-  add_index "postions", ["sport_id"], name: "index_postions_on_sport_id", using: :btree
+  create_table "positions", force: :cascade do |t|
+    t.string   "name"
+    t.string   "abbr"
+    t.integer  "sport_id"
+    t.boolean  "real"
+    t.boolean  "fantasy"
+    t.integer  "fielding_number"
+    t.integer  "order"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "positions", ["sport_id"], name: "index_positions_on_sport_id", using: :btree
 
   create_table "probable_starters", force: :cascade do |t|
     t.integer "player_id"
