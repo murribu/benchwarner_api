@@ -8,14 +8,15 @@ class CreateFantasyTeamTables < ActiveRecord::Migration
     end
     create_table :fantasy_leagues do |t|
       t.string :name
-      t.string :site_id
+      t.string :site_generated_id
       t.references :sport, index: true
       t.references :site, index: true
       t.timestamps :null => false
     end
     create_table :fantasy_teams do |t|
       t.string :name
-      t.string :site_id
+      t.string :site_generated_id
+      t.references :fantasy_league, index: true
       t.references :user, index: true
       t.timestamps :null => false
     end

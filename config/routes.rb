@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     post  'login',                                                 to: 'sessions#create'
     get   'me',                                                    to: 'users#me'
     get   'players/:player_id',                                    to: 'players#search'
+    post  'teams', to: 'teams#create'
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

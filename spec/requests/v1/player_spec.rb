@@ -19,9 +19,8 @@ describe "Getting player info" do
   end
   it "with non-unique name, returns a list of players" do
   get_with_token "/v1/players/johnson", {'Authorization' => @user_auth_token}
-    puts response.body
     arr = JSON.parse(response.body)
     expect(arr["players"][0]["id"]).to_not be_nil
-    expect(response.body).to match(/"Chris"/)
+    expect(response.body).to match(/"Randy"/)
   end
 end

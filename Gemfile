@@ -15,11 +15,13 @@ group :development, :test do
   gem 'capybara'
   gem 'shoulda-matchers', require: false
   gem 'factory_girl_rails', '~> 4.0'
- 
+
 end
 
 group :test do
   gem 'database_cleaner'
+  gem 'spork', '~> 1.0rc'
+  gem 'spork-rails'
 end
 
 group :production do

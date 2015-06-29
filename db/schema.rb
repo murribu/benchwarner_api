@@ -18,10 +18,11 @@ ActiveRecord::Schema.define(version: 20150625201619) do
 
   create_table "fantasy_leagues", force: :cascade do |t|
     t.string   "name"
-    t.integer  "site_id"
+    t.string   "site_generated_id"
     t.integer  "sport_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "site_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   add_index "fantasy_leagues", ["site_id"], name: "index_fantasy_leagues_on_site_id", using: :btree
@@ -51,12 +52,14 @@ ActiveRecord::Schema.define(version: 20150625201619) do
 
   create_table "fantasy_teams", force: :cascade do |t|
     t.string   "name"
-    t.string   "site_id"
+    t.string   "site_generated_id"
+    t.integer  "fantasy_league_id"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
+  add_index "fantasy_teams", ["fantasy_league_id"], name: "index_fantasy_teams_on_fantasy_league_id", using: :btree
   add_index "fantasy_teams", ["user_id"], name: "index_fantasy_teams_on_user_id", using: :btree
 
   create_table "games", force: :cascade do |t|
